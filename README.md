@@ -1,16 +1,35 @@
-# weather
 
-A new Flutter project.
+## Installation
 
-## Getting Started
+To build this app from source you will need a api key from 
+https://www.weatherapi.com/api.aspx
 
-This project is a starting point for a Flutter application.
+Place this api key in assets\json\api_key.json
 
-A few resources to get you started if this is your first Flutter project:
+```
+{
+    "API_KEY" : api_key
+}
+```
+Then you are good to go.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+To get the output file:
+Run these commands 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+    flutter pub get
+    flutter build apk --split-per-abi
+```
+
+Install the apk file on your android device.
+
+
+    
+## 🚀 About Me
+I'm a Chinmay Singh Modak, Flutter App Developer...
+
+
+Check out my other projects on https://github.com/Chinmay575
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/github-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Chinmay575/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chinmay-singh-modak/)
