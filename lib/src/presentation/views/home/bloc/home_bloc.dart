@@ -15,9 +15,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         Position p = await Location.determinePosition();
         Weather w =  Weather.fromMap(await API.getCurrentWeather(p: p,mode: 'cords'));
         List<String> cities = [];
-        cities.add(w.location);
+        cities.add(w.city);
         emit(HomeStateLoaded(weather: w,cities: cities));
       },
     );
+    on<AddNewCityEvent>((event, emit) async {
+      List<String> cities = [];
+      Weather w =  Weather.fromMap(await API.getCurrentWeather(city: event.city,mode: 'city'));
+      cities.add(event.city);
+      emit(HomeStateLoaded().copyWith(weather: w,cities: cities));
+    },);
   }
 }

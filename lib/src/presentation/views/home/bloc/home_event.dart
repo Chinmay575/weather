@@ -5,11 +5,9 @@ abstract class HomeEvent {}
 
 class GetWeatherInfoEvent extends HomeEvent {}
 
-class GetCityInputEvent extends HomeEvent {
+class AddNewCityEvent extends HomeEvent {
   String city;
-  GetCityInputEvent({
+  AddNewCityEvent({
     required this.city,
   });
 }
-
-class CityChangeEvent extends HomeEvent {}

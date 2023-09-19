@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/src/presentation/views/addlocation/addlocation.dart';
+import 'package:weather/src/presentation/views/addlocation/bloc/addlocation_bloc.dart';
 import 'package:weather/src/presentation/views/home/bloc/home_bloc.dart';
 import 'package:weather/src/presentation/views/home/home.dart';
 import 'package:weather/src/utils/constants.dart';
@@ -15,6 +17,13 @@ class AppRouter {
           lazy: false,
         ),
       ),
+      PageEntity(
+        route: AppRoutes.addLocation,
+        page: const AddLocationPage(),
+        bloc: BlocProvider(
+          create: (context) => AddlocationBloc(),
+        ),
+      )
     ];
   }
 
@@ -31,7 +40,7 @@ class AppRouter {
     return MaterialPageRoute(builder: (_) => const HomePage());
   }
 
-  static List<dynamic> allBlocProviders(BuildContext context) {
+  static List<dynamic> allBlocProviders() {
     List<dynamic> blocProviders = <dynamic>[];
     for (var bloc in routes()) {
       blocProviders.add(bloc.bloc);

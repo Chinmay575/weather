@@ -4,9 +4,10 @@ import 'dart:convert';
 import 'package:weather/src/domain/models/forecast.dart';
 
 class Weather {
-  String location;
+  String city;
   String condition;
   int humidity;
+  String country;
   double tempratureC;
   double uvIndex;
   double windK;
@@ -18,12 +19,13 @@ class Weather {
   int rain;
   List<ForecastDay> forecast7Day;
   Weather({
+    required this.country,
     required this.rain,
     required this.sunrise,
     required this.sunset,
     required this.gustK,
     required this.pressuremb,
-    required this.location,
+    required this.city,
     required this.condition,
     required this.humidity,
     required this.tempratureC,
@@ -35,7 +37,8 @@ class Weather {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'location': location,
+      'city': city,
+      'country': country,
       'condition': condition,
       'humidity': humidity,
       'tempratureC': tempratureC,
@@ -55,8 +58,9 @@ class Weather {
     String img = map['current']['condition']['icon'];
     List<dynamic> forecast = map['forecast']['forecastday'] as List<dynamic>;
     return Weather(
+      country: map['location']['country'],
       rain: forecast[0]['day']['daily_chance_of_rain'] as int,
-      location: map['location']['name'] + ',' + map['location']['country'],
+      city: map['location']['name'],
       condition: map['current']['condition']['text'] as String,
       humidity: map['current']['humidity'] as int,
       tempratureC: map['current']['temp_c'] as double,

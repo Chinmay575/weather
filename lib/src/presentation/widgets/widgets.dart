@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/src/domain/models/forecast.dart';
+import 'package:weather/src/utils/constants.dart';
 
 import '../../domain/models/weather.dart';
 
@@ -34,6 +35,7 @@ Widget displayWeather(Weather w, String lastUpdated, BuildContext context) {
     height: deviceHeight * 0.3,
     margin: const EdgeInsets.all(15),
     decoration: BoxDecoration(
+      color: Colors.grey[200],
       boxShadow: const [
         BoxShadow(
           blurRadius: 10,
@@ -68,7 +70,7 @@ Widget displayWeather(Weather w, String lastUpdated, BuildContext context) {
           ),
         ),
         Text(
-          w.location,
+          w.city,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16,
@@ -91,6 +93,7 @@ Widget sunRiseDetails(Weather w, BuildContext context) {
     width: deviceWidth,
     margin: const EdgeInsets.all(15),
     decoration: BoxDecoration(
+      color: Colors.grey[200],
       boxShadow: const [
         BoxShadow(
           blurRadius: 10,
@@ -120,6 +123,7 @@ Widget extraDetails(Weather w, BuildContext context) {
     width: deviceWidth,
     margin: const EdgeInsets.only(right: 15, left: 15),
     decoration: BoxDecoration(
+      color: Colors.grey[200],
       boxShadow: const [
         BoxShadow(
           blurRadius: 10,
@@ -193,7 +197,7 @@ Widget detailsCard(String data, String parameterName, String iconPath) {
   );
 }
 
-Widget locations(List<String> cities) {
+Widget locations(BuildContext context,List<String> cities) {
   return Container(
     margin: const EdgeInsets.symmetric(horizontal: 15),
     child: Column(
@@ -235,7 +239,9 @@ Widget locations(List<String> cities) {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      cities[index],
+                      (cities[index].length > 30)
+                          ? '${cities[index].substring(0, 30)}...'
+                          : cities[index],
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -250,16 +256,16 @@ Widget locations(List<String> cities) {
             },
           ),
         ),
-        addLocationButton(),
+        addLocationButton(context),
       ],
     ),
   );
 }
 
-Widget addLocationButton() {
+Widget addLocationButton(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      
+      Navigator.pushNamed(context, AppRoutes.addLocation);
     },
     child: Container(
       margin: const EdgeInsets.only(bottom: 50),
@@ -294,6 +300,7 @@ Widget showForecast(BuildContext context, Weather w) {
     height: deviceHeight * 0.2,
     margin: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
     decoration: BoxDecoration(
+      color: Colors.grey[200],
       boxShadow: const [
         BoxShadow(
           blurRadius: 10,
@@ -370,6 +377,7 @@ Widget showForecastNext7Days(BuildContext context, Weather w) {
     height: deviceHeight * 0.25,
     margin: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
     decoration: BoxDecoration(
+      color: Colors.grey[200],
       boxShadow: const [
         BoxShadow(
           blurRadius: 10,
@@ -394,7 +402,7 @@ Widget showForecastNext7Days(BuildContext context, Weather w) {
 
 Widget forecastDayCard(ForecastDay f, String position) {
   return Container(
-    width: 75,
+    width: 150,
     margin: (position == 'first')
         ? const EdgeInsets.all(15)
         : const EdgeInsets.only(top: 15, right: 15, bottom: 15),

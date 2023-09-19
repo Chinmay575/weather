@@ -28,7 +28,9 @@ class _HomePageState extends State<HomePage> {
           return Scaffold(body: loadingWidget());
         } else if (state is HomeStateLoaded) {
           return Scaffold(
+            backgroundColor: Colors.grey[300],
             appBar: AppBar(
+              backgroundColor: Colors.grey[300],
               elevation: 0,
               actions: [
                 IconButton(
@@ -42,7 +44,7 @@ class _HomePageState extends State<HomePage> {
             ),
             drawer: SafeArea(
               child: Drawer(
-                child: locations(state.cities!),
+                child: locations(context,state.cities!),
               ),
             ),
             body: showWeatherInfo(state.weather!),
