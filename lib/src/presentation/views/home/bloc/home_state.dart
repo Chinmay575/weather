@@ -15,19 +15,16 @@ class LoadingState extends HomeState {
 
 class HomeStateLoaded extends HomeState {
   Weather? weather;
-  List<String>? cities;
+
   HomeStateLoaded({
     this.weather,
-    this.cities,
   });
 
   HomeStateLoaded copyWith({
     Weather? weather,
-    List<String>? cities,
   }) {
     return HomeStateLoaded(
       weather: weather ?? this.weather,
-      cities: cities ?? this.cities,
     );
   }
 }

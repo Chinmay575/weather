@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/src/presentation/views/addlocation/bloc/addlocation_bloc.dart';
-import 'package:weather/src/presentation/views/home/bloc/home_bloc.dart';
+import 'package:weather/src/presentation/views/managelocations/bloc/manage_bloc.dart';
 
 class AddLocationPage extends StatefulWidget {
   const AddLocationPage({super.key});
@@ -47,8 +47,8 @@ class _AddLocationPageState extends State<AddLocationPage> {
               BlocConsumer<AddlocationBloc, AddlocationState>(
                 listener: (context, state) {
                   if (state is Selected) {
-                    BlocProvider.of<HomeBloc>(context)
-                        .add(AddNewCityEvent(city: state.city));
+                    BlocProvider.of<ManageBloc>(context)
+                        .add(AddLocationEvent(city: state.city));
                   }
                 },
                 builder: (context, state) {

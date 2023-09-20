@@ -4,6 +4,8 @@ import 'package:weather/src/presentation/views/addlocation/addlocation.dart';
 import 'package:weather/src/presentation/views/addlocation/bloc/addlocation_bloc.dart';
 import 'package:weather/src/presentation/views/home/bloc/home_bloc.dart';
 import 'package:weather/src/presentation/views/home/home.dart';
+import 'package:weather/src/presentation/views/managelocations/bloc/manage_bloc.dart';
+import 'package:weather/src/presentation/views/managelocations/managelocations.dart';
 import 'package:weather/src/utils/constants.dart';
 
 class AppRouter {
@@ -23,7 +25,14 @@ class AppRouter {
         bloc: BlocProvider(
           create: (context) => AddlocationBloc(),
         ),
-      )
+      ),
+      PageEntity(
+        route: AppRoutes.manageLocations,
+        page: const ManageLocationsPage(),
+        bloc: BlocProvider(
+          create: (context) => ManageBloc(),
+        ),
+      ),
     ];
   }
 

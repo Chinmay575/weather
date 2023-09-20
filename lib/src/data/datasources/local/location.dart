@@ -1,7 +1,8 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:weather/src/data/datasources/remote/api.dart';
 
 class Location {
-  static Future<Position> determinePosition() async {
+  static Future<String> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -23,6 +24,9 @@ class Location {
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
-    return await Geolocator.getCurrentPosition();
+
+    Position p = await Geolocator.getCurrentPosition();
+    String city = await API.getCity(p);
+    return city;
   }
 }
