@@ -5,8 +5,8 @@ import 'package:weather/src/config/themes.dart';
 
 import 'src/config/global.dart';
 
-void main() {
-  Global.init();
+void main() async {
+  await Global.init();
   runApp(const MyApp());
 }
 

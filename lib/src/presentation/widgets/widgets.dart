@@ -134,7 +134,7 @@ Widget extraDetails(Weather w, BuildContext context) {
       borderRadius: BorderRadius.circular(15),
     ),
     child: GridView(
-      physics: const NeverScrollableScrollPhysics(),
+      physics: const PageScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
       ),
@@ -297,7 +297,7 @@ Widget showForecast(BuildContext context, Weather w) {
   double deviceWidth = MediaQuery.of(context).size.width;
   return Container(
     width: deviceWidth,
-    height: deviceHeight * 0.2,
+    height: deviceHeight * 0.22,
     margin: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
     decoration: BoxDecoration(
       color: Colors.grey[200],

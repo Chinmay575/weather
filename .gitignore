@@ -43,3 +43,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 assets/json/api_key.json
+WeatherApp.jks
